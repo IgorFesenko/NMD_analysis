@@ -1,18 +1,18 @@
-# results BLAST sureNMD against all transcripts Phytozome v12
+# results BLAST sureNMD against all proteins Phytozome v12
 from Bio.Blast import NCBIXML
 import pandas as pd
 
-
-
+#results file
 out_file = r'C:\blast\results\sureNMD_againstAllpepPhytozome'
 
+#parsing BLAST results
 result_handle = open(out_file)
-blast_records = NCBIXML.parse(result_handle) #парсируем результаты бласт
+blast_records = NCBIXML.parse(result_handle)
 results={}
 cnt=0
 
 for alignment in blast_records:
-    #print(alignment)
+
     if (len(alignment.alignments))!=0:
 
         results[alignment.query] = []
