@@ -1,10 +1,10 @@
-
+from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 
 seq_file = r'D:\Google Диск\NMD moss\Lloyd\smg1_assembled_transcripts_v1.6_sureNMDtargetsOnly.fasta'
 out_file = r'D:\Google Диск\NMD moss\Lloyd\smg1_assembled_transcripts_v1.6_sureNMDtargets_translation_withAUG.txt'
 
-
+records = []
 for record in SeqIO.parse(seq_file, 'fasta'):
     print(record)
     messenger_rna = record.seq
@@ -22,6 +22,8 @@ for record in SeqIO.parse(seq_file, 'fasta'):
                 new_seq = pep[position:]
                 if len(new_seq) >= 30:
                     pep_numb += 1
-                    with open(out_file, 'a') as out:
-                        out.write('>' + record.id + '_' + frame_number[i] + ' ' + 'peptide' + str(pep_numb) + '\n')
-                        out.write(str(new_seq) + '\n')
+                    records.append(
+                        SeqRecord(seq=new_seq, id=record.id + '_' + frame_number[i] + 'peptide' + str(pep_numb),
+                                  description=""))
+
+SeqIO.write(records,out_file,"fasta")

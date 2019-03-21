@@ -8,13 +8,11 @@ out_file = r'C:\blast\results\sureNMD_againstAllpepPhytozome'
 #parsing BLAST results
 result_handle = open(out_file)
 blast_records = NCBIXML.parse(result_handle)
-results={}
+results = {}
 cnt=0
 
 for alignment in blast_records:
-
     if (len(alignment.alignments))!=0:
-
         results[alignment.query] = []
         l=alignment.query_letters
         for hit in alignment.alignments: # отбор результатов, с 95% перекрытием
@@ -25,7 +23,7 @@ for alignment in blast_records:
                 if p==l:
                     print('****Alignment****')
                     print('sequence:', hit.title, 'query:', alignment.query)
-                    print('identities:', p, 'length query:', l, 'aligments length:', c)
+                    print('identities: {}, length query: {}, aligments length: {}'.format(p,l,c))
                     print('Hit length:', d)
                     print('e value:', hsp.expect)
                     print(hsp.query[0:100] + '...')

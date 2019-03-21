@@ -1,4 +1,4 @@
-from Bio import SeqIO , Seq
+from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 
 
