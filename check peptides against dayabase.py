@@ -1,6 +1,5 @@
 '''This script check the uniques of identified peptides'''
 from Bio import SeqIO
-from multiprocessing.pool import ThreadPool
 import re
 import pandas as pd
 
@@ -16,13 +15,13 @@ def CheckPep(pep):
     return pep_dict
 
 # list of peptides
-lst_pep = r'C:\Users\IGOR_F\YandexDisk\NMD moss\proteome\proteome two repetition\PEAKS\pep_list.txt'
+lst_pep = r'C:\Users\IGOR_F\YandexDisk\NMD moss\proteome\proteome two repetition\PEAKS\pep_list_smg.txt'
 
 # potein database
-prot_database = r'C:\Users\IGOR_F\YandexDisk\moss_data\Physcomitrella_patens.Phypa_V3.pep.all.fa\Physcomitrella_patens.Phypa_V3.pep.all.fasta'
+prot_database = r'C:\Users\IGOR_F\YandexDisk\NMD moss\db_for_search\Physcomitrella_patens.Phypa_V3.pep.all_chloro_mito+sureNMD_AUG.fasta'
 
 # output
-out_file =r'C:\Users\IGOR_F\YandexDisk\NMD moss\proteome\proteome two repetition\PEAKS\uniq_peps.xlsx'
+out_file =r'C:\Users\IGOR_F\YandexDisk\NMD moss\proteome\proteome two repetition\PEAKS\uniq_peps_sureNMD_smg.xlsx'
 results = pd.DataFrame({'Seq':{}, 'Proteins':{}})
 
 # create list of peptides
