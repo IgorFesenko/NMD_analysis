@@ -1,9 +1,9 @@
-rom Bio import SeqIO
+from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 
 
-seq_file = r"D:\Google Диск\NMD moss\Oksana\lncRNAs_all_with_ncbi.fasta"
-out_file = r'D:\Google Диск\NMD moss\Oksana\lncRNA_translation_30092019.txt'
+seq_file = r"lncRNAs_all_with_ncbi.fasta"
+out_file = r'lncRNA_translation_30092019.txt'
 
 records = []
 for record in SeqIO.parse(seq_file, 'fasta'):
